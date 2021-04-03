@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Online TV</title>
+    <style>
+       /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
+/*# sourceMappingURL=normalize.min.css.map */@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700;800&display=swap");
+html {
+  font-size: 10px;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-family: 'Mulish', sans-serif;
+}
+
+button:focus {
+  outline: none;
+}
+
+.container {
+  max-width: 144rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 144rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin: 0 auto;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-item {
+  margin: 0 2.5rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: 0.2s ease color;
+  transition: 0.2s ease color;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link::after {
+  content: '';
+  opacity: 0;
+  display: block;
+  width: 100%;
+  height: .2rem;
+  margin-top: .5rem;
+  border-radius: 5rem;
+  background: #326cff;
+  background: linear-gradient(151deg, #326cff 0%, #26fff2 100%);
+}
+
+.nav-link.active {
+  color: white;
+}
+
+.nav-link.active::after {
+  opacity: 1;
+}
+
+.control {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  padding-left: 0;
+}
+
+.control-item {
+  margin-left: 7.5rem;
+}
+
+.control-btn {
+  background-color: transparent;
+  border: none;
+  display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.control-btn_search {
+  background-image: url(images/search.svg);
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.control-btn_notice {
+  background-image: url(images/notice.svg);
+  width: 2.13rem;
+  height: 2.35rem;
+}
+
+.control-btn_account {
+  background-image: url(images/account.svg);
+  width: 1.8rem;
+  height: 1.92rem;
+}
+
+.section {
+  padding-top: 5rem;
+}
+
+.section__h2 {
+  font-size: 2.8rem;
+  line-height: 2rem;
+  padding-left: 2rem;
+  padding-right: 3rem;
+  position: relative;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.section__h2::before {
+  content: '';
+  display: block;
+  width: .8rem;
+  height: 3.5rem;
+  border-radius: 5rem;
+  background: #326cff;
+  background: linear-gradient(151deg, #326cff 0%, #26fff2 100%);
+  position: absolute;
+  left: 0;
+  top: calc(50% - 1.7rem);
+}
+
+.section__h2::after {
+  content: '';
+  display: block;
+  width: .9rem;
+  height: 1.5rem;
+  background-image: url(images/title-arrow.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  top: calc(50% - .7rem);
+}
+
+.section__h2-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.section__btn {
+  border: none;
+  border-radius: 10rem;
+  padding: 1.5rem 3rem;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  background: #326cff;
+  background: linear-gradient(151deg, #326cff 0%, #26fff2 100%);
+  color: #fff;
+  -webkit-box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+  -webkit-transition: .2s ease box-shadow;
+  transition: .2s ease box-shadow;
+  margin-top: 5.5rem;
+}
+
+.section__btn:hover {
+  -webkit-box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+}
+
+.section-banner {
+  border-bottom: .1rem solid #2F2E2E;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-banner__image {
+  position: absolute;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+}
+
+.banner {
+  max-width: 56.2rem;
+  padding-top: 12.2rem;
+  padding-bottom: 20.3rem;
+  background-color: #000;
+  -webkit-box-shadow: 100px 0px 100px #000;
+          box-shadow: 100px 0px 100px #000;
+}
+
+.banner__title {
+  font-family: 'Marcellus', serif;
+  font-size: 8rem;
+  line-height: 7.5rem;
+}
+
+.banner__text {
+  color: #C2C2C2;
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.banner-info {
+  font-weight: 800;
+  margin-bottom: 2.9rem;
+}
+
+.banner-info__year {
+  margin-right: 1.8rem;
+}
+
+.banner-info__age {
+  margin-right: 1.8rem;
+  position: relative;
+  width: 6rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.banner-info__age::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2.4rem;
+  background-image: url(images/age.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: calc(50% - 1.2rem);
+  left: 0;
+  right: 0;
+}
+
+.banner-info__time {
+  margin-right: 6.1rem;
+}
+
+.banner-info__rating {
+  position: relative;
+}
+
+.banner-info__rating::after {
+  content: '';
+  display: inline-block;
+  width: 1.6rem;
+  height: 1.6rem;
+  background-image: url(images/star.svg);
+  margin-left: 1rem;
+  position: absolute;
+  top: 0;
+  right: -2.6rem;
+}
+
+.banner-control {
+  margin-top: 3.1rem;
+}
+
+.banner-control__btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 10rem;
+  padding: 1.5rem 3rem;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.banner-control__btn-main {
+  background: #326cff;
+  background: linear-gradient(151deg, #326cff 0%, #26fff2 100%);
+  color: #fff;
+  position: relative;
+  padding-left: 6rem;
+  margin-right: 3rem;
+  -webkit-box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+  -webkit-transition: .2s ease box-shadow;
+  transition: .2s ease box-shadow;
+}
+
+.banner-control__btn-main:hover {
+  -webkit-box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+}
+
+.banner-control__btn-main::after {
+  content: '';
+  display: block;
+  width: 1.4rem;
+  height: 1.8rem;
+  background-image: url(images/play.svg);
+  position: absolute;
+  left: 3rem;
+  top: calc(50% - .9rem);
+}
+
+.banner-control__btn-more {
+  background-color: #fff;
+  color: #323232;
+  -webkit-transition: .2s ease background-color, .2s ease color;
+  transition: .2s ease background-color, .2s ease color;
+}
+
+.banner-control__btn-more:hover {
+  color: #fff;
+  background-color: transparent;
+}
+
+.movies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 2.1rem;
+}
+
+.movies-item {
+  -webkit-box-shadow: 0px 0px 20px rgba(44, 176, 249, 0);
+          box-shadow: 0px 0px 20px rgba(44, 176, 249, 0);
+  -webkit-transition: .2s ease box-shadow;
+  transition: .2s ease box-shadow;
+  border-radius: 2rem;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 14%;
+          flex: 0 0 14%;
+}
+
+.movies-item:hover {
+  -webkit-box-shadow: 0px 0px 20px rgba(44, 176, 249, 0.5);
+          box-shadow: 0px 0px 20px rgba(44, 176, 249, 0.5);
+}
+
+.movies__link {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 30.9rem;
+  display: block;
+  border-radius: 2rem;
+}
+
+.movies__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.genres {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  text-align: center;
+  margin-top: 2.1rem;
+}
+
+.genres-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 23.7%;
+          flex: 0 0 23.7%;
+  border-radius: 2rem;
+  padding: 4.8rem 1rem 3.8rem;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-bottom: 2.7rem;
+}
+
+.genres-item_romance {
+  background: linear-gradient(109.31deg, #FD093F 2.4%, #F383F1 100%);
+}
+
+.genres-item_drama {
+  background: linear-gradient(114.5deg, #0FFFDA 2.22%, #3CDB77 68.84%);
+}
+
+.genres-item_historical {
+  background: linear-gradient(109.31deg, #B936FF 2.4%, #57DEDA 100%);
+}
+
+.genres-item_action {
+  background: linear-gradient(109.31deg, #FD093F 2.4%, #FB1378 2.41%, #FCCB1A 100%);
+}
+
+.genres-item_sci-fi {
+  background: linear-gradient(109.31deg, #FF6472 2.4%, #FDA75D 100%);
+}
+
+.genres-item_horror {
+  background: linear-gradient(110.16deg, #13547A 2.37%, #80D0C7 96.77%);
+}
+
+.genres-item_comedy {
+  background: linear-gradient(109.93deg, #FFF77B 2.37%, #FFBF42 50%);
+}
+
+.genres-item_documentary {
+  background: linear-gradient(109.31deg, #1FA2FF 2.4%, #1FA2FF 2.41%, #1F535C 97.46%);
+}
+
+.genres-icon {
+  height: 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.genres__image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.genres__title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: .2rem 0 0 0;
+}
+
+.actors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  margin-top: 2.1rem;
+}
+
+.actors-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 14%;
+          flex: 0 0 14%;
+}
+
+.actors__link {
+  overflow: hidden;
+  position: relative;
+  width: 19rem;
+  height: 19rem;
+  display: block;
+  border-radius: 100%;
+}
+
+.actors__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 19rem;
+  height: 19rem;
+}
+
+.marketing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+  margin-top: 2.1rem;
+}
+
+.marketing-item {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  border-radius: 2rem;
+}
+
+.marketing-item:first-child .marketing__link {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.marketing-item:last-child .marketing__link {
+  border-radius: 0 2rem 2rem 0;
+}
+
+.marketing__link {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 34.1rem;
+  display: block;
+}
+
+.marketing__img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.offer {
+  max-width: 122.4rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-image: url(images/offer-bg.png);
+  padding: 7.2rem 14.7rem 7.2rem 5.7rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 7rem;
+  margin-bottom: 12.1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.offer__title {
+  font-size: 6.4rem;
+  font-weight: 700;
+  max-width: 80rem;
+  margin: 0;
+  line-height: 1;
+}
+
+.offer__btn {
+  border: none;
+  border-radius: 10rem;
+  padding: 1.5rem 3rem;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 800;
+  cursor: pointer;
+  background: #326cff;
+  background: linear-gradient(151deg, #326cff 0%, #26fff2 100%);
+  color: #fff;
+  -webkit-box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 4px 50px rgba(50, 108, 255, 0.5);
+  -webkit-transition: .2s ease box-shadow;
+  transition: .2s ease box-shadow;
+}
+
+.offer__btn:hover {
+  -webkit-box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+          box-shadow: 0px 0px 0px rgba(50, 108, 255, 0.5);
+}
+
+footer {
+  background-color: #101012;
+  padding: 7rem 0 5rem;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 144rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  margin: 0 auto;
+}
+
+.footer-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.footer-list__item {
+  margin-bottom: 2rem;
+}
+
+.footer-list__link {
+  font-size: 1.8rem;
+  color: #C2C2C2;
+  text-decoration: none;
+  font-weight: 600;
+}
+/*# sourceMappingURL=style.css.map */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header"> <a href="#"><img src="images/logo.svg" alt="Logo"></a>
+        <nav> 
+          <ul class="nav">
+            <li class="nav-item"> <a class="nav-link active" href="">Home</a></li>
+            <li class="nav-item"> <a class="nav-link" href="">TV Shows</a></li>
+            <li class="nav-item"> <a class="nav-link" href="">Movies</a></li>
+            <li class="nav-item"> <a class="nav-link" href="">Series</a></li>
+          </ul>
+        </nav>
+        <ul class="control">
+          <li class="control-item"> 
+            <button class="control-btn control-btn_search"></button>
+          </li>
+          <li class="control-item"> 
+            <button class="control-btn control-btn_notice"></button>
+          </li>
+          <li class="control-item"> 
+            <button class="control-btn control-btn_account"></button>
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section class="section-banner"><img class="section-banner__image" src="images/banner.png" alt="Banner">
+      <div class="container">
+        <div class="banner">
+          <h1 class="banner__title">Zack Snyder's Justice League</h1>
+          <div class="banner-info"> <span class="banner-info__year">2021</span><span class="banner-info__age">18+</span><span class="banner-info__time">4h 2min</span><span class="banner-info__rating">8.8</span></div>
+          <p class="banner__text">Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions.</p>
+          <div class="banner-control">
+            <button class="banner-control__btn banner-control__btn-main">Watch</button>
+            <button class="banner-control__btn banner-control__btn-more">More information</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="section__h2"> <a class="section__h2-link" href="#">Trending TV Shows</a></h2>
+        <div class="movies"> 
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster01.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster02.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster03.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster04.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster05.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster06.png" alt=""></a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="section__h2"> <a class="section__h2-link" href="#">Trending Movies</a></h2>
+        <div class="movies"> 
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster01.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster02.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster03.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster04.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster05.png" alt=""></a></div>
+          <div class="movies-item"> <a class="movies__link" href="#"><img class="movies__img" src="images/posters/poster06.png" alt=""></a></div>
+        </div>
+        <button class="section__btn">See more</button>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="section__h2"> <a class="section__h2-link" href="#">Popular Genres</a></h2>
+        <div class="genres">
+          <div class="genres-item genres-item_romance">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/romance.svg" alt=""></div>
+            <h3 class="genres__title">Romance</h3>
+          </div>
+          <div class="genres-item genres-item_drama">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/drama.svg" alt=""></div>
+            <h3 class="genres__title">Drama</h3>
+          </div>
+          <div class="genres-item genres-item_historical">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/historical.svg" alt=""></div>
+            <h3 class="genres__title">Historical</h3>
+          </div>
+          <div class="genres-item genres-item_action">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/action.svg" alt=""></div>
+            <h3 class="genres__title">Action</h3>
+          </div>
+          <div class="genres-item genres-item_sci-fi">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/sci-fi.svg" alt=""></div>
+            <h3 class="genres__title">Sci-fi</h3>
+          </div>
+          <div class="genres-item genres-item_horror">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/horror.svg" alt=""></div>
+            <h3 class="genres__title">Horror</h3>
+          </div>
+          <div class="genres-item genres-item_comedy">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/comedy.svg" alt=""></div>
+            <h3 class="genres__title">Comedy</h3>
+          </div>
+          <div class="genres-item genres-item_documentary">
+            <div class="genres-icon"><img class="genres__image" src="images/genres/documentary.svg" alt=""></div>
+            <h3 class="genres__title">Documentary</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="section__h2"> <a class="section__h2-link" href="#">Popular Actors & Directors</a></h2>
+        <div class="actors">
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+          <div class="actors-item"> <a class="actors__link" href="#"><img class="actors__img" src="images/actor/actor01.png" alt=""></a>
+            <h3 class="actors__title">Samantha Bowen</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="marketing"> 
+          <div class="marketing-item"> <a class="marketing__link" href=""><img class="marketing__img" src="images/marketing/marketing01.png" alt=""></a></div>
+          <div class="marketing-item"> <a class="marketing__link" href=""><img class="marketing__img" src="images/marketing/marketing02.png" alt=""></a></div>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="offer"> 
+          <h2 class="offer__title">Are You New Here ? Don’t&nbsp;wait, Register Now. </h2>
+          <button class="offer__btn">Register</button>
+        </div>
+      </div>
+    </section>
+    <footer> 
+      <div class="footer"> 
+        <div class="footer-item"> <a href="#"><img src="images/logo.svg" alt="Logo"></a></div>
+        <div class="footer-item"> 
+          <ul class="footer-list"> 
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Voice over and Subtitle</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Media Center </a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Privacy</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Contact us</a></li>
+          </ul>
+        </div>
+        <div class="footer-item"> 
+          <ul class="footer-list"> 
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Voice over and Subtitle</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Investor Relations</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Legal Provisions</a></li>
+          </ul>
+        </div>
+        <div class="footer-item"> 
+          <ul class="footer-list"> 
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Help Center</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Job Opportunities</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Cookies Preferences</a></li>
+          </ul>
+        </div>
+        <div class="footer-item"> 
+          <ul class="footer-list"> 
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Gift Cards</a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Terms of Use </a></li>
+            <li class="footer-list__item"> <a class="footer-list__link" href="#">Corporate Informations</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
